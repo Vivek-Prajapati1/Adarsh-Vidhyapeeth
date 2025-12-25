@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Adarsh Vidyapeeth - Learn about our mission, vision, and commitment to providing the best self-study environment in Sonpur.">
+    <title>About Us | Adarsh Vidyapeeth - Self Study Library Sonpur</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12">
+                        <img src="logo.svg" alt="Adarsh Vidyapeeth Logo" class="w-full h-full">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-900 font-devanagari">आदर्श VIDYAPEETH</h1>
+                        <p class="text-xs text-gray-600">A Self Study Point</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-500 transition">Home</a>
+                    <a href="about.html" class="text-blue-900 font-semibold border-b-2 border-orange-500">About</a>
+                    <a href="facilities.html" class="text-gray-700 hover:text-orange-500 transition">Facilities</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-orange-500 transition">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition">Contact</a>
+                    <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20know%20about%20seat%20availability" 
+                       class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4 pb-4" id="mobile-menu">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-orange-500">Home</a>
+                <a href="about.html" class="block py-2 text-blue-900 font-semibold">About</a>
+                <a href="facilities.html" class="block py-2 text-gray-700 hover:text-orange-500">Facilities</a>
+                <a href="gallery.html" class="block py-2 text-gray-700 hover:text-orange-500">Gallery</a>
+                <a href="contact.html" class="block py-2 text-gray-700 hover:text-orange-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-blue-900 to-blue-700 text-white pt-24 pb-16 md:pt-32 md:pb-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto">
+                हमारी कहानी, हमारा mission, और क्यों हम अलग हैं
+            </p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Our Story</h2>
+                    <div class="w-24 h-1 bg-orange-500 mx-auto"></div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        <span class="text-orange-500 font-bold text-2xl">आदर्श Vidyapeeth</span> की शुरुआत एक simple vision से हुई - 
+                        <strong>हर serious student को एक professional और peaceful study environment मिले</strong>, जहाँ वो अपने 
+                        लक्ष्य की तरफ बिना किसी distraction के आगे बढ़ सके।
+                    </p>
+
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        हमने देखा कि बहुत से talented students अपनी पूरी potential तक नहीं पहुँच पाते क्योंकि उन्हें सही environment 
+                        नहीं मिलता। घर पर distractions होते हैं, और बहुत सी जगहों पर facilities proper नहीं होतीं। 
+                        इसी problem का solution बनने के लिए हमने <strong>Adarsh Vidyapeeth</strong> की स्थापना की।
+                    </p>
+
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        आज हम Sonpur में एक ऐसा space provide करते हैं जो सिर्फ एक library नहीं, बल्कि students के लिए एक 
+                        <strong>complete study ecosystem</strong> है - जहाँ discipline, comfort, safety और facilities सब कुछ मिलता है।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 md:py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Mission -->
+                <div class="bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl shadow-lg p-8 text-white">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-orange-500 text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Our Mission</h2>
+                    <p class="text-lg leading-relaxed">
+                        हर serious student को एक world-class study environment provide करना, जहाँ वो बिना किसी distraction के 
+                        अपने goals achieve कर सके। हम believe करते हैं कि right environment + dedication = guaranteed success.
+                    </p>
+                </div>
+
+                <!-- Vision -->
+                <div class="bg-gradient-to-br from-blue-700 to-blue-900 rounded-xl shadow-lg p-8 text-white">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-eye text-blue-700 text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Our Vision</h2>
+                    <p class="text-lg leading-relaxed">
+                        Bihar और पूरे India में self-study culture को promote करना और एक ऐसा platform बनाना जहाँ हर student 
+                        को equal opportunity मिले अपने dreams को reality में बदलने का।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Should Join -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Who Should Join Us?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Adarsh Vidyapeeth किसके लिए बना है?
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-orange-500 hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-user-graduate text-orange-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Competitive Exam Aspirants</h3>
+                    <p class="text-gray-600">
+                        UPSC, SSC, Railway, Banking, State PCS और अन्य competitive exams की तैयारी करने वाले students के लिए।
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-blue-500 hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">School & College Students</h3>
+                    <p class="text-gray-600">
+                        10th, 12th boards, या college exams की preparation के लिए dedicated study space चाहने वाले students।
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-500 hover:shadow-xl transition">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book-reader text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-3">Self-Learners</h3>
+                    <p class="text-gray-600">
+                        कोई भी student जो self-study करना पसंद करता है और एक quiet, professional environment चाहता है।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Commitments -->
+    <section class="py-16 md:py-20 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Commitments</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">
+                    हम आपसे ये promises करते हैं
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
+                    <i class="fas fa-shield-alt text-5xl text-orange-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">100% Safety</h3>
+                    <p class="text-gray-300 text-sm">24×7 CCTV monitoring और secure environment की guarantee</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
+                    <i class="fas fa-volume-mute text-5xl text-blue-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Complete Silence</h3>
+                    <p class="text-gray-300 text-sm">Strict silence policy, zero tolerance for noise</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
+                    <i class="fas fa-broom text-5xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Hygiene & Cleanliness</h3>
+                    <p class="text-gray-300 text-sm">Daily cleaning और sanitization maintained</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
+                    <i class="fas fa-handshake text-5xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Professional Behavior</h3>
+                    <p class="text-gray-300 text-sm">Staff और management से हमेशा respectful treatment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discipline & Rules -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Discipline & Environment</h2>
+                    <p class="text-gray-600">क्यों हमारा environment अलग है?</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-orange-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Silent Zone Policy</h3>
+                                <p class="text-gray-600">पूरी library में complete silence maintained रहता है। कोई भी disturbance strictly prohibited.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Mobile Phone Rules</h3>
+                                <p class="text-gray-600">Study area में mobile phones silent mode पर होने चाहिए। Calls के लिए designated area available है।</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">No Group Discussions</h3>
+                                <p class="text-gray-600">यह एक self-study library है। Group discussions या group study allowed नहीं है।</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Respectful Environment</h3>
+                                <p class="text-gray-600">सभी students से expected है कि वो एक दूसरे के साथ respectful behavior रखें।</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Safety First</h3>
+                                <p class="text-gray-600">Girls के लिए reserved seating और special attention. सभी के लिए safe environment guaranteed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directors Message -->
+    <section class="py-16 md:py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">Message from Directors</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Director 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Abhijeet Singh</h3>
+                            <p class="text-gray-600">Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic leading-relaxed">
+                        "हमारा मानना है कि हर student में potential है success का। बस ज़रूरत है right environment और dedication की। 
+                        हम Adarsh Vidyapeeth में वो environment create करते हैं जो students को उनके goals तक पहुँचने में help करता है।"
+                    </p>
+                </div>
+
+                <!-- Director 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-br from-blue-700 to-blue-900 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-white text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Prince Singh</h3>
+                            <p class="text-gray-600">Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic leading-relaxed">
+                        "Quality education और proper study environment हर student का right है। हम committed हैं कि हर student को 
+                        best facilities, safety, और support मिले। आपकी success ही हमारी success है।"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-orange-500 to-yellow-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Visit Us & Experience the Difference
+            </h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">
+                बातों से ज्यादा, खुद देखिये। Walk in anytime for a FREE tour!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+918340405216" 
+                   class="bg-white text-orange-500 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+                <a href="contact.html" 
+                   class="bg-blue-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-800 transition shadow-lg">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-devanagari">आदर्श VIDYAPEETH</h3>
+                    <p class="text-gray-300 text-sm mb-4">A Self Study Point</p>
+                    <p class="text-gray-400 text-sm">
+                        Professional self-study library for serious aspirants. 24×7 open with all modern facilities.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="index.html" class="hover:text-orange-400 transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-orange-400 transition">About Us</a></li>
+                        <li><a href="facilities.html" class="hover:text-orange-400 transition">Facilities</a></li>
+                        <li><a href="gallery.html" class="hover:text-orange-400 transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 95048 38838</li>
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 80831 85503</li>
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 83404 05216</li>
+                        <li><i class="fas fa-map-marker-alt mr-2 text-orange-400"></i> Hospital Chowk, Prajapati Complex, Sonpur</li>
+                        <li><i class="fas fa-clock mr-2 text-orange-400"></i> Open 24×7</li>
+                    </ul>
+                </div>
+
+                <!-- Directors -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Directors</h3>
+                    <p class="text-gray-300 text-sm mb-2">
+                        <i class="fas fa-user-tie mr-2 text-orange-400"></i> Abhijeet Singh
+                    </p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        <i class="fas fa-user-tie mr-2 text-orange-400"></i> Prince Singh
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/918340405216" class="text-green-400 hover:text-green-300 transition text-2xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-pink-400 hover:text-pink-300 transition text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Adarsh Vidyapeeth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Bar (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl md:hidden z-50 border-t border-gray-200">
+        <div class="grid grid-cols-3 gap-1 p-2">
+            <a href="tel:+918340405216" 
+               class="bg-orange-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fas fa-phone text-xl mb-1"></i>
+                <span class="text-xs">Call</span>
+            </a>
+            <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20know%20about%20seat%20availability" 
+               class="bg-green-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fab fa-whatsapp text-xl mb-1"></i>
+                <span class="text-xs">WhatsApp</span>
+            </a>
+            <a href="contact.html" 
+               class="bg-blue-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fas fa-map-marker-alt text-xl mb-1"></i>
+                <span class="text-xs">Location</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" 
+            class="fixed bottom-24 md:bottom-8 right-4 bg-orange-500 text-white w-12 h-12 rounded-full shadow-lg hover:bg-orange-600 transition opacity-0 pointer-events-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Facilities at Adarsh Vidyapeeth - CCTV, AC, Free Wi-Fi, Shoe Lockers, RO Water, and more amenities for comfortable studying.">
+    <title>Facilities | Adarsh Vidyapeeth - Study Library Amenities in Sonpur</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12">
+                        <img src="logo.svg" alt="Adarsh Vidyapeeth Logo" class="w-full h-full">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-900 font-devanagari">आदर्श VIDYAPEETH</h1>
+                        <p class="text-xs text-gray-600">A Self Study Point</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-500 transition">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-orange-500 transition">About</a>
+                    <a href="facilities.html" class="text-blue-900 font-semibold border-b-2 border-orange-500">Facilities</a>
+                    <a href="gallery.html" class="text-gray-700 hover:text-orange-500 transition">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition">Contact</a>
+                    <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20know%20about%20seat%20availability" 
+                       class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4 pb-4" id="mobile-menu">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-orange-500">Home</a>
+                <a href="about.html" class="block py-2 text-gray-700 hover:text-orange-500">About</a>
+                <a href="facilities.html" class="block py-2 text-blue-900 font-semibold">Facilities</a>
+                <a href="gallery.html" class="block py-2 text-gray-700 hover:text-orange-500">Gallery</a>
+                <a href="contact.html" class="block py-2 text-gray-700 hover:text-orange-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-blue-900 to-blue-700 text-white pt-24 pb-16 md:pt-32 md:pb-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Facilities</h1>
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto">
+                हर facility को students की comfort और success को ध्यान में रखकर design किया गया है
+            </p>
+        </div>
+    </section>
+
+    <!-- Study Comfort Section -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    <i class="fas fa-couch text-orange-500 mr-3"></i>
+                    Study Comfort
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    लंबे समय तक comfortable study के लिए professional setup
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Facility Card -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-orange-500 to-yellow-500 p-6 text-center">
+                        <i class="fas fa-chair text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Professional Chairs</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Ergonomic professional chairs जो back pain से बचाते हैं। Long study sessions के लिए perfect.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Comfortable & Durable</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-6 text-center">
+                        <i class="fas fa-th-large text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Spacious Desks</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            बड़े desks जिन पर books, notes, और laptop सब easily रख सकते हैं। Personal space guaranteed.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Ample Space</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-yellow-500 to-orange-500 p-6 text-center">
+                        <i class="fas fa-lightbulb text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Eye-Friendly Lighting</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            हर cabin में proper lighting। ना ज्यादा तेज़, ना कम। आंखों पर strain नहीं पड़ता.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Perfect Brightness</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-green-500 to-green-700 p-6 text-center">
+                        <i class="fas fa-snowflake text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">AC with Strong Cooling</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            पूरे year perfect temperature maintained. Summer में भी comfortable study environment.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>24×7 Cooling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety & Discipline Section -->
+    <section class="py-16 md:py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    <i class="fas fa-shield-alt text-red-500 mr-3"></i>
+                    Safety & Discipline
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    आपकी safety हमारी priority है
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-red-500 to-pink-500 p-6 text-center">
+                        <i class="fas fa-video text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">CCTV Surveillance</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            24×7 CCTV monitoring. हर corner में cameras लगे हैं। Complete security guaranteed.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>24×7 Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-700 p-6 text-center">
+                        <i class="fas fa-volume-mute text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Silent Zone Rules</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Strictly maintained silence policy. कोई भी noise या disturbance allowed नहीं है.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Zero Distraction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-500 p-6 text-center">
+                        <i class="fas fa-restroom text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Separate Washrooms</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Clean और well-maintained washrooms. Boys और girls के लिए separate facilities.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Hygienic & Clean</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-br from-pink-500 to-red-500 p-6 text-center">
+                        <i class="fas fa-female text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Reserved Seating for Girls</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Girls के लिए dedicated area. Safe और comfortable environment guaranteed.
+                        </p>
+                        <div class="flex items-center text-green-600 text-sm">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Special Care</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Utilities Section -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    <i class="fas fa-tools text-green-500 mr-3"></i>
+                    Utilities & Services
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    सभी ज़रूरी facilities एक ही जगह
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-wifi text-green-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Free Wi-Fi</h3>
+                            <p class="text-sm text-gray-500">High Speed Internet</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        High-speed Wi-Fi available. Online classes, research, या downloads के लिए perfect connection.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-tint text-blue-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">R.O. Water</h3>
+                            <p class="text-sm text-gray-500">Pure Drinking Water</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        RO purified पानी available है। हमेशा clean और safe drinking water की guarantee.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-shoe-prints text-orange-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Free Shoe Locker</h3>
+                            <p class="text-sm text-gray-500">Personal Storage</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        हर student के लिए free shoe locker. अपने जूते safely रख सकते हैं.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-newspaper text-gray-700 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Magazine & Daily Paper</h3>
+                            <p class="text-sm text-gray-500">Current Affairs</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Monthly magazines और daily newspaper available. Current affairs update रहने के लिए.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-bolt text-yellow-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Power Backup</h3>
+                            <p class="text-sm text-gray-500">Uninterrupted Study</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Power cut में भी कोई problem नहीं। Backup system से continuous supply guaranteed.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-fire-extinguisher text-red-500 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900">Fire Safety</h3>
+                            <p class="text-sm text-gray-500">Emergency Prepared</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Fire extinguishers और safety measures available. आपकी safety को लेकर हम serious हैं.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timing & Availability -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <i class="fas fa-clock text-yellow-400 mr-3"></i>
+                    Timings & Availability
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">
+                        <i class="fas fa-male mr-2"></i>
+                        For Boys
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span class="text-lg">24×7 Open - कभी भी आओ, जब चाहे जाओ</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span class="text-lg">Day & Night Both Shifts Available</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span class="text-lg">No Time Restriction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">
+                        <i class="fas fa-female mr-2"></i>
+                        For Girls
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span class="text-lg">Reserved Seating Area</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span class="text-lg">Safe & Secure Environment</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                            <span class="text-lg">24×7 CCTV Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <p class="text-xl mb-6">
+                    <i class="fas fa-info-circle text-yellow-400 mr-2"></i>
+                    For membership details & seat availability, please contact us directly.
+                </p>
+                <a href="contact.html" 
+                   class="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition shadow-lg">
+                    Contact Us Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's NOT Allowed -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                        <i class="fas fa-ban text-red-500 mr-3"></i>
+                        Rules & Regulations
+                    </h2>
+                    <p class="text-gray-600">
+                        एक peaceful environment बनाए रखने के लिए ये rules ज़रूरी हैं
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">No Group Discussions</h3>
+                                <p class="text-gray-600 text-sm">Study area में group study या discussions strictly prohibited हैं.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Mobile Phones on Silent</h3>
+                                <p class="text-gray-600 text-sm">Study area में mobile silent mode पर रखना compulsory है.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">No Noise</h3>
+                                <p class="text-gray-600 text-sm">कोई भी तरह की आवाज़ strictly prohibited. Complete silence maintained.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">No Eatables Inside</h3>
+                                <p class="text-gray-600 text-sm">Study area में खाना-पीना allowed नहीं है. Designated area में खाएं.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Respect Others</h3>
+                                <p class="text-gray-600 text-sm">सभी students से respectful behavior expected है.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-blue-900 mb-1">Maintain Cleanliness</h3>
+                                <p class="text-gray-600 text-sm">अपनी जगह clean रखें. Dustbin का use करें.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-orange-500 to-yellow-500 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                Experience Our World-Class Facilities
+            </h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">
+                देखना है तो खुद आकर देखिये। FREE visit के लिए बस call करें!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:+918340405216" 
+                   class="bg-white text-orange-500 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                    <i class="fas fa-phone mr-2"></i> 83404 05216
+                </a>
+                <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20visit%20the%20library" 
+                   class="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-devanagari">आदर्श VIDYAPEETH</h3>
+                    <p class="text-gray-300 text-sm mb-4">A Self Study Point</p>
+                    <p class="text-gray-400 text-sm">
+                        Professional self-study library for serious aspirants. 24×7 open with all modern facilities.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="index.html" class="hover:text-orange-400 transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-orange-400 transition">About Us</a></li>
+                        <li><a href="facilities.html" class="hover:text-orange-400 transition">Facilities</a></li>
+                        <li><a href="gallery.html" class="hover:text-orange-400 transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 95048 38838</li>
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 80831 85503</li>
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 83404 05216</li>
+                        <li><i class="fas fa-map-marker-alt mr-2 text-orange-400"></i> Hospital Chowk, Prajapati Complex, Sonpur</li>
+                        <li><i class="fas fa-clock mr-2 text-orange-400"></i> Open 24×7</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Directors</h3>
+                    <p class="text-gray-300 text-sm mb-2">
+                        <i class="fas fa-user-tie mr-2 text-orange-400"></i> Abhijeet Singh
+                    </p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        <i class="fas fa-user-tie mr-2 text-orange-400"></i> Prince Singh
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/918340405216" class="text-green-400 hover:text-green-300 transition text-2xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-pink-400 hover:text-pink-300 transition text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Adarsh Vidyapeeth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Bar (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl md:hidden z-50 border-t border-gray-200">
+        <div class="grid grid-cols-3 gap-1 p-2">
+            <a href="tel:+918340405216" 
+               class="bg-orange-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fas fa-phone text-xl mb-1"></i>
+                <span class="text-xs">Call</span>
+            </a>
+            <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20know%20about%20seat%20availability" 
+               class="bg-green-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fab fa-whatsapp text-xl mb-1"></i>
+                <span class="text-xs">WhatsApp</span>
+            </a>
+            <a href="contact.html" 
+               class="bg-blue-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fas fa-map-marker-alt text-xl mb-1"></i>
+                <span class="text-xs">Location</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" 
+            class="fixed bottom-24 md:bottom-8 right-4 bg-orange-500 text-white w-12 h-12 rounded-full shadow-lg hover:bg-orange-600 transition opacity-0 pointer-events-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

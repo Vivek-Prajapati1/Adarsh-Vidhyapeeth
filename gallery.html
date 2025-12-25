@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery - View photos of Adarsh Vidyapeeth library facilities, study areas, and environment in Sonpur.">
+    <title>Gallery | Adarsh Vidyapeeth - Library Photos Sonpur</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12">
+                        <img src="logo.svg" alt="Adarsh Vidyapeeth Logo" class="w-full h-full">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-900 font-devanagari">आदर्श VIDYAPEETH</h1>
+                        <p class="text-xs text-gray-600">A Self Study Point</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-500 transition">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-orange-500 transition">About</a>
+                    <a href="facilities.html" class="text-gray-700 hover:text-orange-500 transition">Facilities</a>
+                    <a href="gallery.html" class="text-blue-900 font-semibold border-b-2 border-orange-500">Gallery</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition">Contact</a>
+                    <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20know%20about%20seat%20availability" 
+                       class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4 pb-4" id="mobile-menu">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-orange-500">Home</a>
+                <a href="about.html" class="block py-2 text-gray-700 hover:text-orange-500">About</a>
+                <a href="facilities.html" class="block py-2 text-gray-700 hover:text-orange-500">Facilities</a>
+                <a href="gallery.html" class="block py-2 text-blue-900 font-semibold">Gallery</a>
+                <a href="contact.html" class="block py-2 text-gray-700 hover:text-orange-500">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-blue-900 to-blue-700 text-white pt-24 pb-16 md:pt-32 md:pb-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Gallery</h1>
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto">
+                तस्वीरों में देखिये हमारी library और facilities
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="py-8 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="gallery-filter-btn active px-6 py-2 rounded-full bg-orange-500 text-white font-semibold hover:bg-orange-600 transition" data-filter="all">
+                    All Photos
+                </button>
+                <button class="gallery-filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-500 hover:text-white transition" data-filter="interior">
+                    Interior
+                </button>
+                <button class="gallery-filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-500 hover:text-white transition" data-filter="facilities">
+                    Facilities
+                </button>
+                <button class="gallery-filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-500 hover:text-white transition" data-filter="study-area">
+                    Study Area
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <!-- Gallery Item 1 - Placeholder -->
+                <div class="gallery-item interior study-area group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-blue-100 to-blue-200" data-category="interior study-area">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-book-reader text-6xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">Main Study Hall</h3>
+                            <p class="text-gray-600 text-sm mt-2">Spacious desks with proper lighting</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item facilities group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-green-100 to-green-200" data-category="facilities">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-video text-6xl text-red-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">CCTV Security System</h3>
+                            <p class="text-gray-600 text-sm mt-2">24×7 surveillance for safety</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item interior facilities group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-blue-100 to-cyan-200" data-category="interior facilities">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-snowflake text-6xl text-blue-400 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">AC Facility</h3>
+                            <p class="text-gray-600 text-sm mt-2">Strong cooling throughout the year</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item study-area group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-orange-100 to-yellow-200" data-category="study-area">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-chair text-6xl text-orange-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">Professional Chairs</h3>
+                            <p class="text-gray-600 text-sm mt-2">Ergonomic & comfortable seating</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item facilities group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-green-100 to-emerald-200" data-category="facilities">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-wifi text-6xl text-green-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">Free Wi-Fi</h3>
+                            <p class="text-gray-600 text-sm mt-2">High-speed internet access</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item interior study-area group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-purple-100 to-pink-200" data-category="interior study-area">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-th-large text-6xl text-purple-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">Spacious Desks</h3>
+                            <p class="text-gray-600 text-sm mt-2">Individual study spaces with privacy</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item facilities group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-yellow-100 to-orange-200" data-category="facilities">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-lightbulb text-6xl text-yellow-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">Eye-Friendly Lighting</h3>
+                            <p class="text-gray-600 text-sm mt-2">Perfect brightness for long hours</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item facilities group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-blue-100 to-indigo-200" data-category="facilities">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-tint text-6xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">R.O. Water</h3>
+                            <p class="text-gray-600 text-sm mt-2">Clean drinking water available</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 9 -->
+                <div class="gallery-item facilities group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition cursor-pointer bg-gradient-to-br from-gray-100 to-gray-300" data-category="facilities">
+                    <div class="aspect-w-4 aspect-h-3 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-shoe-prints text-6xl text-gray-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-900">Shoe Lockers</h3>
+                            <p class="text-gray-600 text-sm mt-2">Personal storage for everyone</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-0 group-hover:bg-opacity-80 transition flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div class="text-white text-center">
+                            <i class="fas fa-search-plus text-3xl mb-2"></i>
+                            <p class="font-semibold">View Photo</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Note Section -->
+    <section class="py-12 bg-blue-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <i class="fas fa-info-circle text-4xl mb-4 text-yellow-400"></i>
+                <h3 class="text-2xl font-bold mb-4">Note for Visitors</h3>
+                <p class="text-lg mb-2">
+                    ये placeholder images हैं जो facilities को represent करती हैं।
+                </p>
+                <p class="text-gray-300">
+                    असली photos देखने के लिए और complete facility tour के लिए please visit us personally.<br>
+                    हम आपका स्वागत करते हैं!
+                </p>
+                <div class="mt-8">
+                    <a href="contact.html" 
+                       class="inline-block bg-orange-500 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-orange-600 transition shadow-lg">
+                        Schedule a Visit <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour CTA -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl p-8 md:p-12 text-white text-center">
+                <i class="fas fa-eye text-5xl mb-4"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Want to See More?</h2>
+                <p class="text-lg mb-6 max-w-2xl mx-auto">
+                    Pictures से ज्यादा, खुद आकर experience करें। Walk in anytime!<br>
+                    हम आपको personally सारी facilities दिखाएंगे।
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:+918340405216" 
+                       class="bg-white text-orange-500 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                        <i class="fas fa-phone mr-2"></i> Call for Visit
+                    </a>
+                    <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20visit%20the%20library" 
+                       class="bg-blue-900 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-800 transition shadow-lg">
+                        <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 font-devanagari">आदर्श VIDYAPEETH</h3>
+                    <p class="text-gray-300 text-sm mb-4">A Self Study Point</p>
+                    <p class="text-gray-400 text-sm">
+                        Professional self-study library for serious aspirants. 24×7 open with all modern facilities.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="index.html" class="hover:text-orange-400 transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-orange-400 transition">About Us</a></li>
+                        <li><a href="facilities.html" class="hover:text-orange-400 transition">Facilities</a></li>
+                        <li><a href="gallery.html" class="hover:text-orange-400 transition">Gallery</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 95048 38838</li>
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 80831 85503</li>
+                        <li><i class="fas fa-phone mr-2 text-orange-400"></i> 83404 05216</li>
+                        <li><i class="fas fa-map-marker-alt mr-2 text-orange-400"></i> Hospital Chowk, Prajapati Complex, Sonpur</li>
+                        <li><i class="fas fa-clock mr-2 text-orange-400"></i> Open 24×7</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Directors</h3>
+                    <p class="text-gray-300 text-sm mb-2">
+                        <i class="fas fa-user-tie mr-2 text-orange-400"></i> Abhijeet Singh
+                    </p>
+                    <p class="text-gray-300 text-sm mb-4">
+                        <i class="fas fa-user-tie mr-2 text-orange-400"></i> Prince Singh
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://wa.me/918340405216" class="text-green-400 hover:text-green-300 transition text-2xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 transition text-2xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-pink-400 hover:text-pink-300 transition text-2xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Adarsh Vidyapeeth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Bar (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white shadow-2xl md:hidden z-50 border-t border-gray-200">
+        <div class="grid grid-cols-3 gap-1 p-2">
+            <a href="tel:+918340405216" 
+               class="bg-orange-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fas fa-phone text-xl mb-1"></i>
+                <span class="text-xs">Call</span>
+            </a>
+            <a href="https://wa.me/918340405216?text=Hi,%20I%20want%20to%20know%20about%20seat%20availability" 
+               class="bg-green-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fab fa-whatsapp text-xl mb-1"></i>
+                <span class="text-xs">WhatsApp</span>
+            </a>
+            <a href="contact.html" 
+               class="bg-blue-500 text-white py-3 rounded-lg text-center font-semibold flex flex-col items-center justify-center">
+                <i class="fas fa-map-marker-alt text-xl mb-1"></i>
+                <span class="text-xs">Location</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" 
+            class="fixed bottom-24 md:bottom-8 right-4 bg-orange-500 text-white w-12 h-12 rounded-full shadow-lg hover:bg-orange-600 transition opacity-0 pointer-events-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
