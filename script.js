@@ -1,4 +1,4 @@
-// JavaScript for Adarsh Vidhyapeeth Website
+// JavaScript for Adarsh Vidyapeeth Website
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===========================
     // Console Welcome Message
     // ===========================
-    console.log('%c आदर्श Vidhyapeeth ', 'background: #FF8C00; color: white; font-size: 20px; padding: 10px;');
+    console.log('%c आदर्श VIDYAPEETH ', 'background: #FF8C00; color: white; font-size: 20px; padding: 10px;');
     console.log('%c A Self Study Point | 24×7 Open ', 'background: #003D82; color: white; font-size: 14px; padding: 5px;');
     console.log('Website loaded successfully! 🎉');
 
