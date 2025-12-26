@@ -1,4 +1,4 @@
-// JavaScript for Adarsh Vidyapeeth Website
+// JavaScript for Adarsh VIDHYAPEETH Website
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
