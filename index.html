@@ -29,6 +29,42 @@
 </head>
 <body class="font-sans bg-gray-50">
 
+    <!-- New Year 2026 Popup -->
+    <div id="newYearPopup" style="z-index: 9999;" class="fixed top-0 left-0 right-0 transform -translate-y-full transition-transform duration-700 ease-out">
+        <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-900 text-white shadow-2xl">
+            <div class="w-full px-3 py-5 sm:px-4 sm:py-6 md:py-8">
+                <div class="relative max-w-6xl mx-auto">
+                    <!-- Close Button -->
+                    <button id="closePopup" class="absolute -top-1 -right-1 sm:top-0 sm:right-0 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-white hover:text-orange-300 transition-all">
+                        <i class="fas fa-times text-base sm:text-lg md:text-xl"></i>
+                    </button>
+                    
+                    <!-- Popup Content -->
+                    <div class="text-center pr-6 sm:pr-10 md:pr-12">
+                        <h3 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 font-devanagari leading-tight">
+                            🎉 नववर्ष 2026 की हार्दिक शुभकामनाएँ 🎉
+                        </h3>
+                        <p class="text-sm sm:text-base md:text-lg text-yellow-300 font-semibold mb-2 font-devanagari leading-relaxed">
+                            नई ऊर्जा, नया अनुशासन और सफलता की नई शुरुआत।
+                        </p>
+                        <p class="text-xs sm:text-sm md:text-base text-gray-200 font-devanagari leading-relaxed">
+                            आदर्श VIDHYAPEETH की ओर से सभी विद्यार्थियों को एकाग्रता, निरंतर मेहनत और उज्ज्वल भविष्य के लिए शुभकामनाएँ।
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Year 2026 Top Strip -->
+    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2.5 text-center text-sm md:text-base font-medium shadow-md relative z-50">
+        <div class="container mx-auto px-4 flex items-center justify-center">
+            <span class="mr-2">🎊</span>
+            <span>Happy New Year 2026! Wishing all aspirants a focused & successful year.</span>
+            <span class="ml-2">🎊</span>
+        </div>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-md fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 py-3">
@@ -83,7 +119,7 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
                 <!-- Badge -->
-                <div class="inline-block bg-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 animate-bounce">
+                <div id="heroBadge" class="inline-block bg-orange-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6 animate-bounce">
                     अब शुरू हो गया! ✨
                 </div>
                 
@@ -134,6 +170,70 @@
                     <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4">
                         <i class="fas fa-video text-3xl text-red-400 mb-2"></i>
                         <p class="text-sm font-semibold">CCTV Security</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Year 2026 Professional Banner -->
+    <section class="py-12 md:py-16 bg-gradient-to-br from-blue-50 via-white to-orange-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <!-- Main Banner Card -->
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-t-4 border-orange-500">
+                    <div class="relative">
+                        <!-- Decorative Elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full opacity-10 -mr-16 -mt-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full opacity-10 -ml-12 -mb-12"></div>
+                        
+                        <!-- Content -->
+                        <div class="relative z-10 p-8 md:p-12 text-center">
+                            <!-- Main Heading -->
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-4 font-devanagari leading-tight">
+                                🎉 नववर्ष 2026 की हार्दिक शुभकामनाएँ 🎉
+                            </h2>
+                            
+                            <!-- Sub-heading -->
+                            <p class="text-xl md:text-2xl text-gray-700 font-semibold mb-6 font-devanagari leading-relaxed">
+                                नई ऊर्जा, नया अनुशासन और<br>
+                                सफलता की नई शुरुआत।
+                            </p>
+                            
+                            <!-- Divider -->
+                            <div class="flex items-center justify-center mb-6">
+                                <div class="h-1 w-16 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
+                                <div class="mx-4 text-orange-500">
+                                    <i class="fas fa-book-open text-2xl"></i>
+                                </div>
+                                <div class="h-1 w-16 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-6 font-devanagari leading-relaxed">
+                                <strong class="text-blue-900">आदर्श Vidhyapeeth</strong> की ओर से<br>
+                                सभी विद्यार्थियों को एकाग्रता, निरंतर मेहनत<br>
+                                और उज्ज्वल भविष्य के लिए शुभकामनाएँ।
+                            </p>
+                            
+                            <!-- Bottom Tagline -->
+                            <p class="text-sm md:text-base text-gray-500 italic font-devanagari">
+                                "जहाँ पढ़ाई होती है सुकून और अनुशासन के साथ"
+                            </p>
+                            
+                            <!-- Decorative Icons -->
+                            <div class="mt-8 flex items-center justify-center space-x-6 text-3xl">
+                                <div class="text-blue-500 animate-pulse">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="text-orange-500 animate-pulse" style="animation-delay: 0.2s;">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="text-yellow-500 animate-pulse" style="animation-delay: 0.4s;">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
