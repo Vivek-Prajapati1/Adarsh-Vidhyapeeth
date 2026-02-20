@@ -39,7 +39,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://adarshvidhyapeeth.vercel.app'
+    'https://adarshvidhyapeeth.vercel.app',
+    'https://adarsh-vidhyapeeth.onrender.com'
   ],
   credentials: true
 }));
