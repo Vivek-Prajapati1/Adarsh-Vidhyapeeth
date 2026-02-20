@@ -2,10 +2,10 @@ import AuditLog from '../models/AuditLog.js';
 
 // @desc    Get all audit logs
 // @route   GET /api/audit-logs
-// @access  Private/Admin
+// @access  Private (Admin sees all, Directors see filtered)
 export const getAllAuditLogs = async (req, res) => {
   try {
-    const { action, performedBy, targetModel, startDate, endDate, limit = 100 } = req.query;
+    const { action, performedBy, targetModel, targetId, startDate, endDate, limit = 100 } = req.query;
     
     let query = {};
     
@@ -21,6 +21,10 @@ export const getAllAuditLogs = async (req, res) => {
       query.targetModel = targetModel;
     }
     
+    if (targetId) {
+      query.targetId = targetId;
+    }
+    
     if (startDate || endDate) {
       query.timestamp = {};
       if (startDate) {
@@ -29,6 +33,11 @@ export const getAllAuditLogs = async (req, res) => {
       if (endDate) {
         query.timestamp.$lte = new Date(endDate);
       }
+    }
+    
+    // Directors cannot see admin actions
+    if (req.user.role === 'director') {
+      query.performedByRole = { $ne: 'admin' };
     }
 
     const logs = await AuditLog.find(query)
@@ -52,7 +61,7 @@ export const getAllAuditLogs = async (req, res) => {
 
 // @desc    Get audit log by ID
 // @route   GET /api/audit-logs/:id
-// @access  Private/Admin
+// @access  Private (Admin sees all, Directors see filtered)
 export const getAuditLogById = async (req, res) => {
   try {
     const log = await AuditLog.findById(req.params.id)
@@ -62,6 +71,14 @@ export const getAuditLogById = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: 'Audit log not found'
+      });
+    }
+    
+    // Directors cannot see admin actions
+    if (req.user.role === 'director' && log.performedByRole === 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Access denied'
       });
     }
 
@@ -80,15 +97,22 @@ export const getAuditLogById = async (req, res) => {
 
 // @desc    Get audit logs by target
 // @route   GET /api/audit-logs/target/:model/:id
-// @access  Private/Admin
+// @access  Private (Admin sees all, Directors see filtered)
 export const getAuditLogsByTarget = async (req, res) => {
   try {
     const { model, id } = req.params;
 
-    const logs = await AuditLog.find({
+    let query = {
       targetModel: model,
       targetId: id
-    })
+    };
+    
+    // Directors cannot see admin actions
+    if (req.user.role === 'director') {
+      query.performedByRole = { $ne: 'admin' };
+    }
+
+    const logs = await AuditLog.find(query)
       .populate('performedBy', 'name username role')
       .sort({ timestamp: -1 });
 

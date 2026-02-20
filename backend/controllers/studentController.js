@@ -257,14 +257,82 @@ export const updateStudent = async (req, res) => {
 
     const oldValues = {
       name: student.name,
-      mobile: student.mobile
+      mobile: student.mobile,
+      studentType: student.studentType,
+      timePlan: student.timePlan,
+      seatNumber: student.seatNumber
     };
 
-    // Update basic fields only
-    const { name, mobile } = req.body;
+    // Update fields
+    const { name, mobile, studentType, timePlan, seatNumber } = req.body;
     
     if (name) student.name = name;
     if (mobile) student.mobile = mobile;
+    
+    // Handle student type change
+    if (studentType && studentType !== student.studentType) {
+      student.studentType = studentType;
+    }
+    
+    // Handle time plan change
+    if (timePlan && timePlan !== student.timePlan) {
+      // Get new pricing
+      const pricing = await Pricing.findOne({
+        seatType: student.studentType,
+        duration: timePlan,
+        isActive: true
+      });
+      
+      if (pricing) {
+        student.timePlan = timePlan;
+        student.totalFee = pricing.price;
+        student.feePaid = Number(student.feePaid) || 0;
+        student.feeDue = Number(student.totalFee) - Number(student.feePaid);
+        
+        // Update fee status
+        if (student.feePaid > student.totalFee) {
+          student.feeStatus = 'advanced';
+        } else if (student.feePaid === student.totalFee) {
+          student.feeStatus = 'paid';
+          student.feeDue = 0;
+        } else if (student.feePaid > 0) {
+          student.feeStatus = 'partial';
+        } else {
+          student.feeStatus = 'due';
+        }
+      }
+    }
+    
+    // Handle seat change
+    if (seatNumber && seatNumber !== student.seatNumber) {
+      // Free old seat
+      await Seat.findOneAndUpdate(
+        { seatId: student.seatNumber },
+        { status: 'available', occupiedBy: null }
+      );
+      
+      // Occupy new seat
+      const newSeat = await Seat.findOne({ seatId: seatNumber });
+      if (!newSeat) {
+        return res.status(404).json({
+          success: false,
+          message: 'New seat not found'
+        });
+      }
+      
+      if (newSeat.status === 'occupied') {
+        return res.status(400).json({
+          success: false,
+          message: 'Seat is already occupied'
+        });
+      }
+      
+      newSeat.status = 'occupied';
+      newSeat.occupiedBy = student._id;
+      await newSeat.save();
+      
+      student.seatNumber = seatNumber;
+    }
     
     // Handle photo update if uploaded (Cloudinary URL)
     if (req.file) {
@@ -275,7 +343,7 @@ export const updateStudent = async (req, res) => {
 
     // Create audit log
     await createAuditLog({
-      action: 'student_edited',
+      action: 'student_updated',
       performedBy: req.user.id,
       performedByName: req.user.name,
       performedByRole: req.user.role,
@@ -284,7 +352,10 @@ export const updateStudent = async (req, res) => {
       oldValues,
       newValues: {
         name: student.name,
-        mobile: student.mobile
+        mobile: student.mobile,
+        studentType: student.studentType,
+        timePlan: student.timePlan,
+        seatNumber: student.seatNumber
       },
       ipAddress: req.ip
     });
@@ -538,6 +609,18 @@ export const getStudentStats = async (req, res) => {
       isDeleted: false 
     });
 
+    // Fee status counts
+    const paidCount = await Student.countDocuments({ feeStatus: 'paid', isDeleted: false });
+    const partialCount = await Student.countDocuments({ feeStatus: 'partial', isDeleted: false });
+    const dueCount = await Student.countDocuments({ feeStatus: 'due', isDeleted: false });
+    const advancedCount = await Student.countDocuments({ feeStatus: 'advanced', isDeleted: false });
+
+    // Get students with advanced payment (paid more than fees)
+    const advancedStudents = await Student.find({ 
+      feeStatus: 'advanced', 
+      isDeleted: false 
+    }).select('name mobile studentType seatNumber totalFee feePaid feeDue');
+
     res.status(200).json({
       success: true,
       data: {
@@ -549,11 +632,72 @@ export const getStudentStats = async (req, res) => {
         byType: {
           regular: regularActive,
           premium: premiumActive
+        },
+        byFeeStatus: {
+          paid: paidCount,
+          partial: partialCount,
+          due: dueCount,
+          advanced: advancedCount,
+          advancedStudents: advancedStudents
         }
       }
     });
   } catch (error) {
     console.error('Get student stats error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+};
+
+// @desc    Recalculate fee status for all students (utility endpoint)
+// @route   POST /api/students/recalculate-fees
+// @access  Private (Admin only)
+export const recalculateFeeStatus = async (req, res) => {
+  try {
+    const students = await Student.find({ isDeleted: false });
+    let updatedCount = 0;
+
+    for (const student of students) {
+      const oldStatus = student.feeStatus;
+      
+      // Ensure numeric values
+      const feePaid = Number(student.feePaid) || 0;
+      const totalFee = Number(student.totalFee) || 0;
+      
+      // Recalculate fee status based on current logic
+      if (feePaid > totalFee) {
+        student.feeStatus = 'advanced';
+        student.feeDue = totalFee - feePaid; // Keep negative to show extra
+      } else if (feePaid === totalFee && totalFee > 0) {
+        student.feeStatus = 'paid';
+        student.feeDue = 0;
+      } else if (feePaid > 0) {
+        student.feeStatus = 'partial';
+        student.feeDue = totalFee - feePaid;
+      } else {
+        student.feeStatus = 'due';
+        student.feeDue = totalFee - feePaid;
+      }
+
+      if (oldStatus !== student.feeStatus) {
+        await student.save();
+        updatedCount++;
+        console.log(`Updated ${student.name}: ${oldStatus} → ${student.feeStatus}`);
+      }
+    }
+
+    res.status(200).json({
+      success: true,
+      message: `Fee status recalculated for ${updatedCount} students`,
+      data: {
+        totalStudents: students.length,
+        updatedCount
+      }
+    });
+  } catch (error) {
+    console.error('Recalculate fee status error:', error);
     res.status(500).json({
       success: false,
       message: 'Server error'

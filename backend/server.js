@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 // Now import modules that use environment variables
 import connectDatabase from './config/database.js';
 import './config/cloudinary.js'; // Initialize Cloudinary with env vars
+import { fixFeeStatus } from './scripts/fixFeeStatus.js';
 
 // Import routes
 import authRoutes from './routes/authRoutes.js';
@@ -36,6 +37,7 @@ app.use(helmet({
 }));
 app.use(cors({
   origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+
   credentials: true
 }));
 app.use(compression());
@@ -110,10 +112,13 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`✅ Server running on port ${PORT}`);
   console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log('📁 Cloudinary:', process.env.CLOUDINARY_CLOUD_NAME ? `✅ ${process.env.CLOUDINARY_CLOUD_NAME}` : '❌ Not configured');
+  
+  // Run fee status fix on startup
+  await fixFeeStatus();
 });
 
 // Handle unhandled promise rejections

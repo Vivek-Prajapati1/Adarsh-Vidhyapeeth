@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from '../lib/api';
 import toast from 'react-hot-toast';
-import { RefreshCw, User, CheckCircle, XCircle, Calendar } from 'lucide-react';
+import { RefreshCw, User, CheckCircle, XCircle, Calendar, UserCircle, Phone, IndianRupee, UserCheck } from 'lucide-react';
 import { format } from 'date-fns';
 
 const Seats = () => {
@@ -268,87 +268,157 @@ const Seats = () => {
       {/* Seat Details Modal */}
       {showModal && selectedSeat && (
         <div className="modal-backdrop backdrop-blur-sm" onClick={() => setShowModal(false)}>
-          <div className="modal-content max-w-lg mx-4 rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-t-2xl p-6">
-              <h3 className="text-2xl font-bold text-white flex items-center">
-                Seat {selectedSeat.seatId}
-                {selectedSeat.status === 'available' ? (
-                  <CheckCircle className="w-6 h-6 ml-3 text-green-300" />
-                ) : (
-                  <XCircle className="w-6 h-6 ml-3 text-red-300" />
-                )}
-              </h3>
+          <div className="fixed inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 top-8 bottom-8 sm:w-full sm:max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className={`rounded-t-2xl p-6 ${
+              selectedSeat.status === 'available' 
+                ? 'bg-gradient-to-r from-green-600 to-emerald-600' 
+                : selectedSeat.seatType === 'premium'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600'
+                  : 'bg-gradient-to-r from-blue-600 to-cyan-600'
+            }`}>
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-bold text-white flex items-center">
+                  Seat {selectedSeat.seatId}
+                  {selectedSeat.status === 'available' ? (
+                    <CheckCircle className="w-6 h-6 ml-3 text-green-300" />
+                  ) : (
+                    <User className="w-6 h-6 ml-3 text-white" />
+                  )}
+                </h3>
+                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                  selectedSeat.seatType === 'premium' 
+                    ? 'bg-purple-200 text-purple-900' 
+                    : 'bg-blue-200 text-blue-900'
+                }`}>
+                  {selectedSeat.seatType}
+                </span>
+              </div>
             </div>
 
-            <div className="p-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="text-sm text-gray-600">Seat Type</div>
-                  <div className="font-semibold capitalize mt-1">{selectedSeat.seatType}</div>
-                </div>
-                <div>
-                  <div className="text-sm text-gray-600">Status</div>
-                  <div className={`font-semibold capitalize mt-1 ${selectedSeat.status === 'available' ? 'text-green-600' : 'text-red-600'}`}>
-                    {selectedSeat.status}
-                  </div>
-                </div>
-              </div>
-
-              {selectedSeat.status === 'occupied' && selectedSeat.studentDetails && (
+            {/* Content - Scrollable */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+              {selectedSeat.status === 'occupied' && selectedSeat.studentDetails ? (
                 <>
-                  <div className="border-t pt-4">
-                    <h4 className="font-semibold text-gray-900 mb-3">Student Information</h4>
-                    <div className="space-y-3">
-                      <div>
-                        <div className="text-sm text-gray-600">Name</div>
-                        <div className="font-semibold mt-1">{selectedSeat.studentDetails.name}</div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-600">Mobile</div>
-                        <div className="font-semibold mt-1">{selectedSeat.studentDetails.mobile}</div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <div className="text-sm text-gray-600">Plan</div>
-                          <div className="font-semibold mt-1">{selectedSeat.studentDetails.timePlan}</div>
+                  <h4 className="font-semibold text-gray-900 mb-4 text-lg">Student Information</h4>
+                  
+                  {/* Student Photo and Basic Info */}
+                  <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4 mb-4">
+                    <div className="flex gap-4">
+                      {/* Photo */}
+                      <div className="flex-shrink-0">
+                          {selectedSeat.studentDetails.photo ? (
+                            <img
+                              src={selectedSeat.studentDetails.photo}
+                              alt={selectedSeat.studentDetails.name}
+                              className="w-20 h-20 rounded-lg object-cover border-2 border-white shadow-md"
+                            />
+                          ) : (
+                            <div className="w-20 h-20 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 border-2 border-white shadow-md flex items-center justify-center">
+                              <UserCircle className="w-12 h-12 text-gray-400" />
+                            </div>
+                          )}
                         </div>
-                        <div>
-                          <div className="text-sm text-gray-600">Fee Status</div>
-                          <div className={`font-semibold mt-1 capitalize ${selectedSeat.studentDetails.feeStatus === 'paid' ? 'text-green-600' : 'text-yellow-600'}`}>
-                            {selectedSeat.studentDetails.feeStatus}
-                          </div>
+                        
+                        {/* Name and Mobile */}
+                        <div className="flex-1">
+                          <h5 className="text-xl font-bold text-gray-900">{selectedSeat.studentDetails.name}</h5>
+                          <a 
+                            href={`tel:${selectedSeat.studentDetails.mobile}`}
+                            className="text-blue-600 hover:text-blue-800 font-medium flex items-center mt-2 w-fit"
+                          >
+                            <Phone className="w-4 h-4 mr-2" />
+                            {selectedSeat.studentDetails.mobile}
+                          </a>
                         </div>
                       </div>
-                      <div>
-                        <div className="text-sm text-gray-600">Join Date</div>
-                        <div className="font-semibold mt-1 flex items-center">
+                    </div>
+                    
+                    {/* Plan and Status */}
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      <div className="bg-white rounded-lg p-3 border border-gray-200">
+                        <div className="text-xs text-gray-600">Time Plan</div>
+                        <div className="font-semibold text-gray-900 mt-1">{selectedSeat.studentDetails.timePlan}</div>
+                      </div>
+                      <div className="bg-white rounded-lg p-3 border border-gray-200">
+                        <div className="text-xs text-gray-600">Fee Status</div>
+                        <div className={`font-semibold mt-1 capitalize ${
+                          selectedSeat.studentDetails.feeStatus === 'paid' ? 'text-green-600' : 
+                          selectedSeat.studentDetails.feeStatus === 'partial' ? 'text-yellow-600' :
+                          selectedSeat.studentDetails.feeStatus === 'advanced' ? 'text-purple-600' :
+                          'text-red-600'
+                        }`}>
+                          {selectedSeat.studentDetails.feeStatus}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Fee Details */}
+                    <div className="bg-white rounded-lg p-3 border border-gray-200 mb-4">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-gray-600">Total Fee:</span>
+                        <span className="font-bold text-blue-600">₹{selectedSeat.studentDetails.totalFee}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm mt-2">
+                        <span className="text-gray-600">Paid:</span>
+                        <span className="font-bold text-green-600">₹{selectedSeat.studentDetails.feePaid}</span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm mt-2">
+                        <span className="text-gray-600">Due:</span>
+                        <span className="font-bold text-red-600">₹{selectedSeat.studentDetails.feeDue}</span>
+                      </div>
+                    </div>
+                    
+                    {/* Dates */}
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center justify-between bg-white rounded-lg p-2 border border-gray-200">
+                        <span className="text-sm text-gray-600">Join Date:</span>
+                        <div className="flex items-center text-sm font-semibold text-gray-900">
                           <Calendar className="w-4 h-4 mr-2 text-gray-500" />
                           {format(new Date(selectedSeat.studentDetails.joinDate), 'dd MMM yyyy')}
                         </div>
                       </div>
-                      <div>
-                        <div className="text-sm text-gray-600">Expiry Date</div>
-                        <div className="font-semibold mt-1 flex items-center">
+                      <div className="flex items-center justify-between bg-white rounded-lg p-2 border border-gray-200">
+                        <span className="text-sm text-gray-600">Expiry Date:</span>
+                        <div className="flex items-center text-sm font-semibold text-gray-900">
                           <Calendar className="w-4 h-4 mr-2 text-gray-500" />
                           {format(new Date(selectedSeat.studentDetails.expiryDate), 'dd MMM yyyy')}
                         </div>
                       </div>
                     </div>
-                  </div>
+                    
+                    {/* Added By */}
+                    {selectedSeat.studentDetails.addedBy && (
+                      <div className="bg-green-50 rounded-lg p-3 border border-green-200">
+                        <div className="flex items-center">
+                          <UserCheck className="w-4 h-4 mr-2 text-green-600" />
+                          <span className="text-sm text-gray-600">Added by:</span>
+                          <span className="ml-2 font-semibold text-gray-900">
+                            {selectedSeat.studentDetails.addedBy.name}
+                          </span>
+                        </div>
+                      </div>
+                    )}
                 </>
-              )}
-
-              {selectedSeat.status === 'available' && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                  <p className="text-sm text-green-800">
-                    This seat is available for allocation. Assign it when adding a new {selectedSeat.seatType} student.
+              ) : (
+                // Available Seat
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                  <p className="text-sm text-green-800 font-medium">
+                    This seat is available for allocation.
+                  </p>
+                  <p className="text-xs text-green-600 mt-2">
+                    Assign it when adding a new {selectedSeat.seatType} student.
                   </p>
                 </div>
               )}
             </div>
 
-            <div className="flex justify-end pt-4 mt-4 border-t">
-              <button onClick={() => setShowModal(false)} className="btn btn-secondary w-full sm:w-auto">
+            {/* Footer */}
+            <div className="border-t px-4 sm:px-6 py-4 bg-gray-50">
+              <button 
+                onClick={() => setShowModal(false)} 
+                className="btn btn-secondary w-full sm:w-auto"
+              >
                 Close
               </button>
             </div>

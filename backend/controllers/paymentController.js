@@ -145,16 +145,25 @@ export const addPayment = async (req, res) => {
     console.log('Payment created:', payment._id);
 
     // Update student fee status
-    student.feePaid += parseFloat(amount);
-    student.feeDue = student.totalFee - student.feePaid;
+    student.feePaid = Number(student.feePaid) + Number(amount);
+    student.feeDue = Number(student.totalFee) - Number(student.feePaid);
+    
+    console.log(`Fee update: Paid=${student.feePaid}, Total=${student.totalFee}, Due=${student.feeDue}`);
     
     if (student.feePaid > student.totalFee) {
-      student.feeStatus = 'overpaid';
-    } else if (student.feeDue <= 0) {
+      student.feeStatus = 'advanced';
+      console.log('Status set to: advanced');
+      // Keep negative feeDue to show extra payment amount
+    } else if (student.feePaid === student.totalFee) {
       student.feeStatus = 'paid';
       student.feeDue = 0;
+      console.log('Status set to: paid');
     } else if (student.feePaid > 0) {
       student.feeStatus = 'partial';
+      console.log('Status set to: partial');
+    } else {
+      student.feeStatus = 'due';
+      console.log('Status set to: due');
     }
     
     await student.save();
@@ -248,18 +257,19 @@ export const reversePayment = async (req, res) => {
 
     // Update student fee status
     const student = payment.student;
-    student.feePaid -= payment.amount;
-    student.feeDue = student.totalFee - student.feePaid;
+    student.feePaid = Number(student.feePaid) - Number(payment.amount);
+    student.feeDue = Number(student.totalFee) - Number(student.feePaid);
     
     if (student.feePaid > student.totalFee) {
-      student.feeStatus = 'overpaid';
-    } else if (student.feeDue >= student.totalFee) {
-      student.feeStatus = 'due';
-    } else if (student.feePaid >= student.totalFee) {
+      student.feeStatus = 'advanced';
+      // Keep negative feeDue to show extra payment amount
+    } else if (student.feePaid === student.totalFee) {
       student.feeStatus = 'paid';
       student.feeDue = 0;
     } else if (student.feePaid > 0) {
       student.feeStatus = 'partial';
+    } else {
+      student.feeStatus = 'due';
     }
     
     await student.save();

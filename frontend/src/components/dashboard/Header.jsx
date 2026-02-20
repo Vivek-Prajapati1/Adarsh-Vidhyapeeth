@@ -13,6 +13,7 @@ const Header = ({ onMenuClick }) => {
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [showingAll, setShowingAll] = useState(false);
 
   // Fetch unread count
   const fetchUnreadCount = async () => {
@@ -25,16 +26,22 @@ const Header = ({ onMenuClick }) => {
   };
 
   // Fetch notifications
-  const fetchNotifications = async () => {
+  const fetchNotifications = async (limit = 10) => {
     try {
       setLoading(true);
-      const { data } = await api.get('/notifications?limit=10');
+      const { data } = await api.get(`/notifications?limit=${limit}`);
       setNotifications(data.data);
     } catch (error) {
       console.error('Error fetching notifications:', error);
     } finally {
       setLoading(false);
     }
+  };
+
+  // View all notifications
+  const viewAllNotifications = () => {
+    setShowingAll(true);
+    fetchNotifications(100); // Fetch up to 100 notifications
   };
 
   // Mark notification as read
@@ -88,7 +95,8 @@ const Header = ({ onMenuClick }) => {
   // Fetch notifications when dropdown opens
   useEffect(() => {
     if (showNotifications) {
-      fetchNotifications();
+      setShowingAll(false); // Reset to showing limited notifications
+      fetchNotifications(10);
     }
   }, [showNotifications]);
 
@@ -125,14 +133,24 @@ const Header = ({ onMenuClick }) => {
 
       <div className="flex items-center space-x-2 sm:space-x-3">
         {/* Notification Bell */}
-        <div className="relative">
+        <div className="relative flex-shrink-0">
           <button
-            onClick={() => setShowNotifications(!showNotifications)}
-            className="relative p-2 rounded-xl hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100 transition-all duration-300 group"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowNotifications(!showNotifications);
+            }}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setShowNotifications(!showNotifications);
+            }}
+            className="relative p-2 sm:p-2.5 rounded-xl hover:bg-gradient-to-br hover:from-orange-50 hover:to-orange-100 transition-all duration-300 group active:scale-95 touch-manipulation"
+            aria-label="Notifications"
+            type="button"
           >
-            <Bell className="w-6 h-6 text-gray-600 group-hover:text-orange-600 transition-colors" />
+            <Bell className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 group-hover:text-orange-600 transition-colors pointer-events-none" />
             {unreadCount > 0 && (
-              <span className="absolute top-0.5 right-0.5 min-w-[20px] h-5 px-1.5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center animate-pulse border-2 border-white">
+              <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] sm:min-w-[20px] sm:h-5 px-1 sm:px-1.5 bg-red-500 text-white text-[10px] sm:text-xs font-bold rounded-full flex items-center justify-center animate-pulse border-2 border-white shadow-sm pointer-events-none">
                 {unreadCount > 99 ? '99+' : unreadCount}
               </span>
             )}
@@ -142,10 +160,21 @@ const Header = ({ onMenuClick }) => {
           {showNotifications && (
             <>
               <div
-                className="fixed inset-0 z-10"
-                onClick={() => setShowNotifications(false)}
+                className="fixed inset-0 z-[999] touch-manipulation"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowNotifications(false);
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setShowNotifications(false);
+                }}
               />
-              <div className="absolute right-0 mt-3 w-96 sm:max-w-[calc(100vw-2rem)] max-w-[calc(100vw-1rem)] bg-white rounded-2xl shadow-2xl border border-gray-200 z-20 overflow-hidden max-h-[70vh] sm:max-h-[600px] flex flex-col">
+              <div 
+                className="fixed sm:absolute left-4 right-4 sm:left-auto sm:right-0 top-20 sm:top-auto sm:mt-3 w-auto sm:w-96 max-w-md bg-white rounded-2xl shadow-2xl border border-gray-200 z-[1000] overflow-hidden max-h-[calc(100vh-6rem)] sm:max-h-[600px] flex flex-col"
+                onClick={(e) => e.stopPropagation()}
+              >
                 {/* Header */}
                 <div className="px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-br from-orange-50 to-orange-100 border-b border-gray-200 flex items-center justify-between">
                   <h3 className="font-bold text-gray-900 text-sm sm:text-base">Notifications</h3>
@@ -160,7 +189,7 @@ const Header = ({ onMenuClick }) => {
                 </div>
 
                 {/* Notifications List */}
-                <div className="overflow-y-auto flex-1">
+                <div className="overflow-y-auto flex-1 overscroll-contain" style={{ WebkitOverflowScrolling: 'touch' }}>
                   {loading ? (
                     <div className="flex items-center justify-center py-8">
                       <div className="spinner"></div>
@@ -211,15 +240,18 @@ const Header = ({ onMenuClick }) => {
                 {/* Footer */}
                 {notifications.length > 0 && (
                   <div className="px-3 sm:px-4 py-2 bg-gray-50 border-t border-gray-200">
-                    <button
-                      onClick={() => {
-                        setShowNotifications(false);
-                        // Navigate to notifications page if you have one
-                      }}
-                      className="text-xs text-center w-full text-blue-600 hover:text-blue-700 font-semibold"
-                    >
-                      View all notifications
-                    </button>
+                    {!showingAll ? (
+                      <button
+                        onClick={viewAllNotifications}
+                        className="text-xs text-center w-full text-blue-600 hover:text-blue-700 font-semibold"
+                      >
+                        View all notifications
+                      </button>
+                    ) : (
+                      <p className="text-xs text-center w-full text-gray-500">
+                        Showing all notifications
+                      </p>
+                    )}
                   </div>
                 )}
               </div>

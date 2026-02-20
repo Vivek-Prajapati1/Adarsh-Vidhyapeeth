@@ -13,16 +13,21 @@ export const createNotification = async ({
   relatedModel
 }) => {
   try {
-    // Get all users except the actor
+    // Get all admins and directors except the actor
     const users = await User.find({
       _id: { $ne: actorId },
+      role: { $in: ['admin', 'director'] },
       isActive: true
-    }).select('_id');
+    }).select('_id role name');
+
+    console.log('Creating notification for type:', type);
+    console.log('Actor:', actorName, '(', actorRole, ')');
+    console.log('Recipients found:', users.length, 'users');
+    users.forEach(u => console.log('  -', u.name, '(', u.role, ')'));
 
     const recipientIds = users.map(user => user._id);
 
-    // If director is the actor, send to admin and other directors
-    // If admin is the actor, send to all directors
+    // Create notification for all admins and directors except the actor
     const notification = await Notification.create({
       type,
       title,
@@ -34,6 +39,8 @@ export const createNotification = async ({
       relatedId,
       relatedModel
     });
+
+    console.log('Notification created successfully with ID:', notification._id);
 
     return notification;
   } catch (error) {

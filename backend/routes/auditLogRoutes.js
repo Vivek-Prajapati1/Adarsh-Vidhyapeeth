@@ -9,12 +9,14 @@ import { protect, authorize } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// All routes are admin-only
+// All routes require authentication
 router.use(protect);
-router.use(authorize('admin'));
 
+// Audit logs stats are admin-only
+router.get('/stats', authorize('admin'), getAuditLogStats);
+
+// Other routes accessible by both admin and directors
 router.get('/', getAllAuditLogs);
-router.get('/stats', getAuditLogStats);
 router.get('/target/:model/:id', getAuditLogsByTarget);
 router.get('/:id', getAuditLogById);
 
