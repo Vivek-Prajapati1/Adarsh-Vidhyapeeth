@@ -36,7 +36,7 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 app.use(cors({
-  origin: [
+  origin: process.env.CORS_ORIGIN || [
     'http://localhost:3000',
     'http://localhost:5173',
     'https://adarshvidhyapeeth.vercel.app',
@@ -62,6 +62,17 @@ app.use('/api/students', studentRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/audit-logs', auditLogRoutes);
 app.use('/api/notifications', notificationRoutes);
+
+// Root route - Backend is Running
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Backend is Running',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0',
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
