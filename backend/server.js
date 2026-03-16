@@ -7,9 +7,9 @@ import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Now import modules that use environment variables
+// Import modules that use environment variables
 import connectDatabase from './config/database.js';
-import './config/cloudinary.js'; // Initialize Cloudinary with env vars
+import './config/cloudinary.js';
 import { fixFeeStatus } from './scripts/fixFeeStatus.js';
 
 // Import routes
@@ -26,34 +26,60 @@ import notificationRoutes from './routes/notificationRoutes.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Connect to database
+// Connect Database
 connectDatabase();
 
 const app = express();
 
-// Security middleware
+
+// ======================
+// Middleware
+// ======================
+
+// Security
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
+
+// CORS Configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'https://adarshvidhyapeeth.vercel.app',
-    'https://adarsh-vidhyapeeth.onrender.com'
-  ],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("CORS not allowed"), false);
+    }
+  },
   credentials: true
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
 app.use(compression());
 
-// Body parser
+// Body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve uploaded files statically
+
+// ======================
+// Static Files
+// ======================
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// API Routes
+
+// ======================
+// Routes
+// ======================
+
 app.use('/api/auth', authRoutes);
 app.use('/api/directors', directorRoutes);
 app.use('/api/pricing', pricingRoutes);
@@ -63,7 +89,11 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/audit-logs', auditLogRoutes);
 app.use('/api/notifications', notificationRoutes);
 
-// Root route - Backend is Running
+
+// ======================
+// Root Route
+// ======================
+
 app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
@@ -74,7 +104,11 @@ app.get('/', (req, res) => {
   });
 });
 
-// Health check endpoint
+
+// ======================
+// Health Check
+// ======================
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
@@ -83,41 +117,53 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Error handler middleware
+
+// ======================
+// Error Handler
+// ======================
+
 app.use((err, req, res, next) => {
-  console.error('Error:', err);
-  
-  // Multer errors
+
+  console.error("❌ Error:", err);
+
+  // Multer Errors
   if (err instanceof multer.MulterError) {
+
     if (err.code === 'LIMIT_FILE_SIZE') {
       return res.status(400).json({
         success: false,
         message: 'File too large. Maximum size is 5MB'
       });
     }
+
     return res.status(400).json({
       success: false,
       message: err.message
     });
   }
-  
-  // Cloudinary or other file upload errors
+
+  // Cloudinary errors
   if (err.message && err.message.includes('Cloudinary')) {
     return res.status(500).json({
       success: false,
-      message: 'File upload failed. Please check Cloudinary configuration.',
+      message: 'File upload failed. Check Cloudinary configuration.',
       error: process.env.NODE_ENV === 'development' ? err.message : undefined
     });
   }
-  
+
   res.status(err.statusCode || 500).json({
     success: false,
     message: err.message || 'Server Error',
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
+
 });
 
-// Handle 404
+
+// ======================
+// 404 Handler
+// ======================
+
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -125,20 +171,39 @@ app.use((req, res) => {
   });
 });
 
+
+// ======================
+// Start Server
+// ======================
+
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, async () => {
-  console.log(`✅ Server running on port ${PORT}`);
+
+  console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log('📁 Cloudinary:', process.env.CLOUDINARY_CLOUD_NAME ? `✅ ${process.env.CLOUDINARY_CLOUD_NAME}` : '❌ Not configured');
-  
-  // Run fee status fix on startup
+
+  console.log(
+    '📁 Cloudinary:',
+    process.env.CLOUDINARY_CLOUD_NAME
+      ? `✅ ${process.env.CLOUDINARY_CLOUD_NAME}`
+      : '❌ Not configured'
+  );
+
+  // Fix fee status
   await fixFeeStatus();
+
 });
 
-// Handle unhandled promise rejections
+
+// ======================
+// Handle Unhandled Promise Rejections
+// ======================
+
 process.on('unhandledRejection', (err) => {
+
   console.error(`❌ Unhandled Rejection: ${err.message}`);
-  // Close server & exit process
+
   process.exit(1);
+
 });
