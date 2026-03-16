@@ -111,7 +111,7 @@ const AddStudent = () => {
     submitData.append('joinDate', formData.joinDate);
 
     if (photoFile) {
-      submitData.append('photo', photoFile);
+      submitData.append('studentPhoto', photoFile);
     }
 
     try {

@@ -19,19 +19,19 @@ const seedDatabase = async () => {
     // await User.deleteMany({ role: 'admin' });
 
     // Seed Admin User
-    const adminExists = await User.findOne({ username: 'admin' });
+    const adminExists = await User.findOne({ username: process.env.ADMIN_USERNAME });
     if (!adminExists) {
       await User.create({
         name: 'Admin',
-        username: 'admin',
-        password: 'admin123',
-        mobile: '9999999999',
+        username: process.env.ADMIN_USERNAME,
+        password: process.env.ADMIN_PASSWORD,
+        mobile: '1234567890',
         role: 'admin',
         isActive: true
       });
-      console.log('✅ Admin user created (username: admin, password: admin123)');
+      console.log('✅ Admin user created');
     } else {
-      console.log('ℹ️  Admin user already exists');
+      console.log('Admin user already exists');
     }
 
     // Seed Regular Seats (R1 - R80)
@@ -90,12 +90,7 @@ const seedDatabase = async () => {
       }
     }
 
-    console.log('\n🎉 Database seeding completed successfully!');
-    console.log('\n📝 Login Credentials:');
-    console.log('   Username: admin');
-    console.log('   Password: admin123');
-    console.log('\n⚠️  IMPORTANT: Change the admin password after first login!\n');
-
+    
     process.exit(0);
   } catch (error) {
     console.error('❌ Seeding error:', error);
