@@ -32,8 +32,8 @@ api.interceptors.response.use(
     if (error.code === 'ERR_NETWORK') {
       console.error('Network error - Cannot connect to backend server');
     }
-    if (error.response?.status === 401) {
-      // Unauthorized - clear token and redirect to login
+    // Only redirect on 401 if NOT on login page (to avoid interrupting login error handling)
+    if (error.response?.status === 401 && !window.location.pathname.includes('/login')) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
