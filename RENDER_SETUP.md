@@ -29,11 +29,11 @@ production
 PORT
 5000
 
-MONGO_URI
+MONGODB_URI
 mongodb+srv://YOUR_MONGODB_USERNAME:YOUR_PASSWORD@YOUR_CLUSTER.mongodb.net/adarsh-vidhyapeeth?retryWrites=true&w=majority
 
 JWT_SECRET
-your-secret-key-here-make-it-long-and-random-12345678
+adarsh-vidyapeeth-production-secret-key-2026-change-this
 
 JWT_EXPIRE
 7d
@@ -48,17 +48,20 @@ CLOUDINARY_API_SECRET
 your-cloudinary-api-secret
 ```
 
+**⚠️ CRITICAL: Variable name is `MONGODB_URI` not `MONGO_URI`**
+
 ---
 
 ## 📝 How to Get Your Values
 
-### MongoDB URI (MONGO_URI)
+### MongoDB URI (MONGODB_URI) - ⚠️ IMPORTANT
 1. Go to: https://cloud.mongodb.com/
 2. Click your cluster
 3. Click **Connect** → **Connect your application**
 4. Copy the connection string
 5. Replace `<password>` with your actual database password
 6. Replace `<database>` with `adarsh-vidhyapeeth`
+7. **Make sure to use variable name: `MONGODB_URI` (not MONGO_URI)**
 
 ### JWT Secret (JWT_SECRET)
 - Use any long random string (at least 32 characters)
@@ -148,7 +151,40 @@ Before testing login again:
 1. Wait 2-3 minutes for deployment to complete
 2. Check Render logs for "Server running"
 3. Try logging in again at: https://adarshvidhyapeeth.vercel.app/login
-4. Use your admin credentials
+4. **Default Admin Credentials:**
+   - Username: `admin`
+   - Password: `admin123`
+
+**⚠️ Note:** If you're seeing "Invalid credentials", it means:
+- Either the database doesn't have the admin user yet
+- Or you need to use different credentials
+
+---
+
+## 🔧 If Admin User Doesn't Exist
+
+If you get "Invalid credentials" error, you need to create the admin user in your MongoDB database:
+
+### Option 1: Using MongoDB Atlas UI
+1. Go to MongoDB Atlas: https://cloud.mongodb.com/
+2. Click **Browse Collections**
+3. Find database: `adarsh-vidhyapeeth`
+4. Create collection: `users`
+5. Insert this document:
+```json
+{
+  "name": "Admin",
+  "username": "admin",
+  "password": "$2a$10$YourHashedPasswordHere",
+  "mobile": "9999999999",
+  "role": "admin",
+  "isActive": true,
+  "createdAt": { "$date": "2026-02-20T00:00:00.000Z" },
+  "updatedAt": { "$date": "2026-02-20T00:00:00.000Z" }
+}
+```
+
+### Option 2: Contact me to help you seed the database
 
 ---
 
